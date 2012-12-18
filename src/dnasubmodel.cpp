@@ -38,7 +38,7 @@ DNA DNASubModel::charToDNA(char c)
    else if (c == 'T' || c == 't') return DNA_T;
    else 
    {
-      assert(false);
+     // assert(false);
       return DNA_Max;
    }
 }
@@ -51,7 +51,7 @@ char DNASubModel::DNAToChar(DNA dna)
    else if (dna == DNA_T) return 'T';
    else
    {
-      assert(false);
+     // assert(false);
       return 'N';
    }
 }
