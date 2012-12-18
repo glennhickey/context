@@ -1,0 +1,28 @@
+These are some sample model parameter sets.  They were trained from pairwise alignments with human chromosome 22 as described in the paper.  They were produced using 
+
+context/test/scripts/f84test.sh
+
+which was also used for the JCB paper data.  
+
+Four sets of parameters are included for each species:
+_sf84_djc : Felsenstien 84 substitution model with Jukes Cantor context dependence model
+_sf84: Felsenstein 84 subsitution model with *no* context dependence
+_sjc_djc : Jukes Cantor substitution model with Jukes Cantor context dependence model
+_sjc : Jukes Cantor substitution model with *no* context dependence
+
+
+* * *
+
+Note to self:
+
+taken from backup snapshot of  
+context/test/results/hky/clusterdumpt/jcb2me
+
+where tarsier_5000_50_60_15_0.025_100_par_sf84_djc.txt -> tarsier_sf84_dcj.txt
+and   tarsier_5000_50_60_15_0.025_100_par_sf84_djc_nc.txt -> tarsier_sf84.txt
+and   tarsier_5000_50_60_15_0.025_100_par_sjc_djc.txt -> tarsier_sjc_djc.txt
+and   tarsier_5000_50_60_15_0.025_100_par_sjc_djc_sjc.txt -> tarsier_sjc.txt
+
+etc.
+
+
