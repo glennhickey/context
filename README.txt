@@ -12,6 +12,40 @@ configure --prefix="installation dir"; make; make install
 
 Note: The source code is huge because of the generated code to solve the integrals required by the context F84 model.   There shouldn't be any dependencies though.
 
+QUICK START
+
+Some parameter sets that were pre-computed using the training program are found in context/example/params.  For each species (described in the paper), four parameter sets are given: 
+
+_sf84_djc : Felsenstien 84 substitution model with Jukes Cantor context dependence model
+_sf84: Felsenstein 84 subsitution model with *no* context dependence
+_sjc_djc : Jukes Cantor substitution model with Jukes Cantor context dependence model
+_sjc : Jukes Cantor substitution model with *no* context dependence
+
+Suppose we have a file in MFA-like format called human_dog.mfa that we would like to align (or realign) using the Felsenstein 84 / Jukes Cantor parameters for human/dog and a context window of length 2. 
+
+human1  ACCACAAATTTA
+dog1 ACCACAT--TTTA
+human2  TCCC
+dog2 CCAC
+
+etc.
+
+We would run
+
+src/align infile=human_dog.mfa outfile=output.mfa fpfile=example/params/dog _sf84_djc.txt win=2
+
+and the output would be in output.mfa 
+
+Test data can be simulated using the "genpair" tool (todo: describe).  It can also be sampled from a given alignment.  Some such sample alignments (indeed, those used for the paper and sample parameters) are given in context/data.  In order to sample 100 pairwise alignments from the human/dog alignment, each of length [50 - 100], one can run
+
+src/axtsample infile=data/chr22.hg19.canFam2.net.axt outfile=sample.mfa minlen=50 maxlen=100 n=100
+
+This command creates the sampled file in sample.mfa, and displays some summary statistics on the screen.  These are estimated parameters (computed from the input file using simple counting statistics, not the training) of the entire input file, and of the sample.  They are mostly useful to give an idea of how representative the sample is of the input. 
+
+The obtained sub-alignment sample can then be realigned as above:
+
+src/align infile=sample.mfa outfile=sample_realigned fpfile=example/params/dog _sf84_djc.txt win=7
+
 
 ALIGNMENT
 
