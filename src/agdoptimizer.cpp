@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <limits>
+#include <algorithm>
 
 #include "agdoptimizer.h"
 #include "ftagstates.h"

@@ -4,6 +4,7 @@
 
 #include <cmath>
 #include <cassert>
+#include <cstring>
 
 template<class T> inline
 Matrix<T>::Matrix() : _h(0), _w(0), _mat(NULL)
@@ -49,7 +50,7 @@ void Matrix<T>::resize(size_t width, size_t height)
       _w = width;
       _h = height;
       _mat = new T[_h * _w];
-      memset(_mat, 0, sizeof(T) * _h * _w);
+      std::memset(_mat, 0, sizeof(T) * _h * _w);
    }
 }
 
@@ -101,7 +102,7 @@ Matrix<T>& Matrix<T>::operator/=(const Matrix<T>& mat)
       if (_mat[i])
       {
          _mat[i] /= mat._mat[i];
-         assert(!isnan(_mat[i]));
+         assert(!std::isnan(_mat[i]));
       }
    }
    return *this;
@@ -144,7 +145,7 @@ T Matrix<T>::get(size_t row, size_t col) const
 template<class T> inline
 void Matrix<T>::set(size_t row, size_t col, T val)
 {
-   assert(!isnan(val));
+   assert(!std::isnan(val));
    _mat[row * _w + col] = val;
 }
 
@@ -157,7 +158,7 @@ void Matrix<T>::add(size_t row, size_t col, T val)
 template<class T> inline
 void Matrix<T>::multByScalar(T val)
 {
-   assert(!isnan(val));
+   assert(!std::isnan(val));
    size_t size = _h * _w;
    for (size_t i = 0; i < size; ++i)
    {
@@ -168,7 +169,7 @@ void Matrix<T>::multByScalar(T val)
 template<class T> inline
 void Matrix<T>::setAll(T val)
 {
-   assert(!isnan(val));
+   assert(!std::isnan(val));
    size_t size = _h * _w;
    for (size_t i = 0; i < size; ++i)
    {
