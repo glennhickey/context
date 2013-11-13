@@ -8,7 +8,7 @@
 #include <ostream>
 #include <iterator>
 #include <fstream>
-
+#include <algorithm>
 #include "ftaggen.h"
 #include "ftagargs.h"
 #include "pairs.h"
