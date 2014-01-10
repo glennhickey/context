@@ -10,7 +10,7 @@ INSTALLATION
 
 configure --prefix="installation dir"; make; make install
 
-Note: The source code is huge because of the generated code to solve the integrals required by the context F84 model.   There shouldn't be any dependencies though.
+Note: The source code is huge because of the generated code to solve the integrals required by the context F84 model.   IF THE COMPILATION SEEMS TO BE TAKING FOREVER, TRY TURNING OFF O2 OPTIMIZATIONS, WHICH SEEM TO CAUSE PROBLEMS ON OLDER VERSIONS OF GCC, BY ADDING THE FOLLOWING ARGUMENT TO configure: CXXFLAGS=-O
 
 QUICK START
 
