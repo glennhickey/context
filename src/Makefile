@@ -148,7 +148,7 @@ am_libftag_a_OBJECTS = dnasubmodel.$(OBJEXT) ctmarkov.$(OBJEXT) \
 	emissionestimator.$(OBJEXT) ftagtrain.$(OBJEXT) \
 	ftaggen.$(OBJEXT) outputqueue.$(OBJEXT) agdoptimizer.$(OBJEXT) \
 	ftagargs.$(OBJEXT) axtpair.$(OBJEXT) axtreader.$(OBJEXT) \
-	pairs.$(OBJEXT)
+	pairs.$(OBJEXT) ftagscore.$(OBJEXT)
 libftag_a_OBJECTS = $(am_libftag_a_OBJECTS)
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
@@ -372,7 +372,7 @@ top_builddir = ..
 top_srcdir = ..
 AUTOMAKE_OPTIONS = subdir-objects
 noinst_LIBRARIES = libftag.a libdblf84.a
-libftag_a_SOURCES = dnasubmodel.cpp dnasubmodel.h matrix.h matrix_impl.h ctmarkov.cpp ctmarkov.h contextmodel.cpp contextmodel.h contextmodeltable.cpp contextmodeltable.h ftagmodel.cpp ftagmodel_forward.cpp ftagmodel_viterbi.cpp ftagmodel_backward.cpp ftagmodel.h ftagtable_impl.h ftagtable.h ftagtablestructs.h ftagstates.h transitionmodel.cpp transitionmodel.h ftagparams.cpp ftagparams.h ftagmodel_bw.cpp em.h transitionestimator.h transitionestimator.cpp emissionestimator.h emissionestimator.cpp ftagtrain.cpp ftagtrain.h ftaggen.h ftaggen.cpp outputqueue.h outputqueue.cpp agdoptimizer.cpp agdoptimizer.h ftagargs.cpp ftagargs.h axtpair.cpp axtpair.h axtreader.cpp axtreader.h pairs.cpp pairs.h 
+libftag_a_SOURCES = dnasubmodel.cpp dnasubmodel.h matrix.h matrix_impl.h ctmarkov.cpp ctmarkov.h contextmodel.cpp contextmodel.h contextmodeltable.cpp contextmodeltable.h ftagmodel.cpp ftagmodel_forward.cpp ftagmodel_viterbi.cpp ftagmodel_backward.cpp ftagmodel.h ftagtable_impl.h ftagtable.h ftagtablestructs.h ftagstates.h transitionmodel.cpp transitionmodel.h ftagparams.cpp ftagparams.h ftagmodel_bw.cpp em.h transitionestimator.h transitionestimator.cpp emissionestimator.h emissionestimator.cpp ftagtrain.cpp ftagtrain.h ftaggen.h ftaggen.cpp outputqueue.h outputqueue.cpp agdoptimizer.cpp agdoptimizer.h ftagargs.cpp ftagargs.h axtpair.cpp axtpair.h axtreader.cpp axtreader.h pairs.cpp pairs.h ftagscore.cpp ftagscore.h
 libdblf84_a_SOURCES = dblf84/dblf84.cpp dblf84/dblf84.h \
 	dblf84/dblf84_dec.h dblf84/dblf84_111.cpp \
 	dblf84/dblf84_112.cpp dblf84/dblf84_113.cpp \
@@ -759,6 +759,7 @@ include ./$(DEPDIR)/ftagmodel_forward.Po
 include ./$(DEPDIR)/ftagmodel_viterbi.Po
 include ./$(DEPDIR)/ftagmodeltest.Po
 include ./$(DEPDIR)/ftagparams.Po
+include ./$(DEPDIR)/ftagscore.Po
 include ./$(DEPDIR)/ftagtabletest.Po
 include ./$(DEPDIR)/ftagtrain.Po
 include ./$(DEPDIR)/ftagtraintest.Po
