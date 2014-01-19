@@ -33,6 +33,9 @@ public:
 
 protected:
 
+   // allocate the dp arrays if necessary
+   void initTable();
+
    // compute score of a single match column (note no transition taken into
    // account
    void scoreMatch(size_t pos);
@@ -69,20 +72,26 @@ protected:
    // the current detected state along the alingment;
    // we always keep track of a non-context (0) and context state (1)
    // in the case of match, we set them both to match
-   FTAGStates::State _state[2];
+   FTAGStates::State* _state;
+   // the previous state (before above)
+   FTAGStates::State* _lastState;
+   // code changed.  now above are just shortcuts into an actual vector
+   FTAGStates::State* _stateArray;
+   size_t _arraySize;
 
    // if the above state is an indel, we also store its size
    size_t _indelSize;
 
-   // the previous state (before above)
-   FTAGStates::State _lastState[2];
+   // also need to keep track of longest run of ms
+   size_t _matchSize;
 
    // viterbi dynamic programming table.  stores value for 
    // 0 = non-context, 1 = context.  
-   double _table[2];
+   double* _table;
    // like above but for previous column
-   double _lastTable[2];
-   
+   double* _lastTable;
+   // code changed.  now above are just shortcuts into an actual vector
+   double* _tableArray;
 };
 
 inline FTAGStates::State FTAGScore::getContext(FTAGStates::State state) const
