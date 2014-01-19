@@ -162,7 +162,7 @@ void FTAGScore::scoreIndel(size_t pos)
 
   // compute score of contexst indel;
   _table[1] = NEGINF;
-  if (_indelSize >= _matchSize)
+  if (_indelSize <= _matchSize)
   {
     State inside = _state[1] == S_MIx ? S_MIzM : S_MDyM;
     insScore = 0.0;
@@ -202,6 +202,7 @@ void FTAGScore::scoreIndel(size_t pos)
     size_t prevIdx = 2 * (pos - _indelSize);
     double* prevTable = &_tableArray[prevIdx];
     State* prevState = &_stateArray[prevIdx];
+
     double tPr0 = prevTable[0] + log(_transModel->prTrans(prevState[0], 
                                                           _state[1]));
     double tPr1 = prevTable[1] + log(_transModel->prTrans(prevState[1], 
@@ -211,8 +212,8 @@ void FTAGScore::scoreIndel(size_t pos)
 
   // write last position of indel in table, because it could be checked
   // in the case of two context indels in a row
-  double* endTable = &_tableArray[pos + _indelSize];
-  State* endState = &_stateArray[pos + _indelSize];
+  double* endTable = &_tableArray[2 * (pos + _indelSize)];
+  State* endState = &_stateArray[2 * (pos + _indelSize)];
   copy2(endTable, _table);
   copy2(endState, _state);
   _matchSize = 0;
