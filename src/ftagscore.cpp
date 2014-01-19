@@ -58,7 +58,7 @@ double FTAGScore::logViterbiScore(const pair<string, string>& alignment)
     {
       scoreMatch(pos);
     }
-    else if (_state[0] == S_Ix)
+    else
     {
       scoreIndel(pos);
       // skip ahead
@@ -130,7 +130,7 @@ void FTAGScore::scoreIndel(size_t pos)
   {
     State inside = _state[0] == S_MIx ? S_MIzM : S_MDyM;
     insScore = 0.0;
-    for (size_t i = pos; i < _N && getColID(i) == _state[0]; ++i, ++_indelSize)
+    for (size_t i = pos; i < _N && getColID(i) == _state[0]; ++i)
     {
       DNA c1 = DNASubModel::charToDNA(_alignment->first[i - _indelSize]);
       DNA c2 = DNASubModel::charToDNA(_alignment->second[i - _indelSize]);
